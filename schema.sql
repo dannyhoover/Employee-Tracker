@@ -13,7 +13,7 @@ create table roles(
     salary decimal(10, 2) not null,
     department_id int not null,
     primary key(id),
-    foreign key(department_id) references departments(id)
+    foreign key(department_id) references departments(id) on DELETE CASCADE
 );
 
 create table employees(
@@ -23,6 +23,6 @@ create table employees(
     role_id int not null,
     manager_id int null,
     primary key(id),
-    foreign key(role_id) references roles(id),
-    foreign key(manager_id) references employees(id)
+    foreign key(role_id) references roles(id) on delete CASCADE,
+    foreign key(manager_id) references employees(id) on DELETE set NULL
 );
