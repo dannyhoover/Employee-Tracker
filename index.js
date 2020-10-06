@@ -1,4 +1,4 @@
-const fs = require("fs");
+
 const inquirer = require("inquirer");
 
 // async loop function example
@@ -31,4 +31,4 @@ async function loop() {
 
 loop();
 
-init().catch(err => { console.log(err) });
+// init().catch(err => { console.log(err) });

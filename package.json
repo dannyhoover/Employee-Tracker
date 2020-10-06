@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/dannyhoover/Employee-Tracker#readme",
   "dependencies": {
+    "inquirer": "^7.3.3",
     "mysql": "^2.18.1"
-  }
+  },
+  "devDependencies": {}
 }
