@@ -6,4 +6,5 @@ const orm = require("./orm");
   await orm.createDepartment({name: "IT"});
   const [hr, it] = await orm.getDepartments();
   await orm.createRole({title:"Relations Manager", salary: 20000, departmentId: hr.id});
+  await orm.createRole({title:"Tech Support Specialist", salary: 40000, departmentId: it.id});
 })();
