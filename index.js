@@ -46,7 +46,7 @@ async function listEmployees () {
         ]
       }
     ])
-  if (choice = choices[0]) {
+  if (choiceView = choices[0]) {
     console.log(getDepartments);
   } else if (choice = choices[1]) {
     console.log(getRoles);
