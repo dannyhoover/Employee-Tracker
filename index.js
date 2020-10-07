@@ -1,5 +1,6 @@
 
 const inquirer = require("inquirer");
+const { getDepartments, getRoles, getEmployees } = require("./orm");
 
 // async loop function example
 // async function loop() {
@@ -10,9 +11,9 @@ const inquirer = require("inquirer");
 //   }
 // }
 
-async function loop() {
-    console.log('Employee Tracker: ')
-    const choice = await inquirer.prompt([
+async function menu() {
+  console.log('Employee Tracker: ')
+  const choice = await inquirer.prompt([
     {
       type: "list",
       name: "choice",
@@ -27,8 +28,33 @@ async function loop() {
         "View the total utilized budget of a department"
       ]
     }]);
+  if (choice = choices[0]) {
+    listEmployees();
+  }
 }
 
-loop();
+async function listEmployees () {
+    const choiceView = await inquirer.prompt([
+      {
+        type: "list",
+        name: "choice",
+        message: "What would you like to view?",
+        choices: [
+          "View departments",
+          "View Roles",
+          "View Employees"
+        ]
+      }
+    ])
+  if (choice = choices[0]) {
+    console.log(getDepartments);
+  } else if (choice = choices[1]) {
+    console.log(getRoles);
+  } else {
+    console.log(getEmployees)
+  }
+}
 
-// init().catch(err => { console.log(err) });
+menu();
+
+menu().catch(err => { console.log(err) });
