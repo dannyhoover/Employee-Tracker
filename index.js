@@ -13,7 +13,7 @@ const { getDepartments, getRoles, getEmployees } = require("./orm");
 
 async function menu() {
   console.log('Employee Tracker: ')
-  const choice = await inquirer.prompt([
+  let choice = await inquirer.prompt([
     {
       type: "list",
       name: "choice",
@@ -28,31 +28,32 @@ async function menu() {
         "View the total utilized budget of a department"
       ]
     }]);
-  if (choice = choices[0]) {
+  if (choice = "View departments, roles, or employees") {
     listEmployees();
   }
 }
 
 async function listEmployees () {
-    const choiceView = await inquirer.prompt([
+    let choiceView = await inquirer.prompt([
       {
         type: "list",
         name: "choice",
         message: "What would you like to view?",
         choices: [
-          "View departments",
+          "View Departments",
           "View Roles",
           "View Employees"
         ]
       }
     ])
-  if (choiceView = choices[0]) {
-    console.log(getDepartments);
-  } else if (choice = choices[1]) {
-    console.log(getRoles);
+  if (choiceView = "View Departments") {
+    console.log(getDepartments());
+  } else if (choiceView = "View Roles") {
+    console.log(getRoles());
   } else {
-    console.log(getEmployees)
+    console.log(getEmployees());
   }
+  return choiceView;
 }
 
 menu();
