@@ -10,6 +10,9 @@ const connection = mysql.createConnection({
 connection.connect();
 
 module.exports = {
+  disconnect() {
+    connection.end();
+  },
   getDepartments() {
     return new Promise(function(resolve, reject) {
       connection.query(
@@ -82,8 +85,22 @@ module.exports = {
       );
     });
   },
-  updateEmployee(data) {
-
+  updateEmployee({id, firstName, lastName, roleId, managerId}) {
+    return new Promise(function(resolve, reject) {
+      const data = {}
+      if (firstName != null) data.first_name = firstName;
+      if (lastName != null) data.last_name = lastName;
+      if (roleId != null) data.role_id = roleId;
+      if (managerId != null) data.manager_id = managerId; 
+      connection.query(
+        'update employees set ? where ?',
+        [data, {id}],
+        function (error, results) {
+          if (error) reject(error);
+          else resolve(results);
+        }
+      );
+    });
   },
   deleteDepartment(id) {
 
